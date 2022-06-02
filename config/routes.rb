@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'application#test'
+  root 'pages#start'
 end
