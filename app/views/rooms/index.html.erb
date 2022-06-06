@@ -1,0 +1,18 @@
+<h1>Rooms monitor</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Room name</th> 
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @rooms.each do |room|%>
+            <tr>
+                <td><%= room.room_name %></td>
+                <td>action</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

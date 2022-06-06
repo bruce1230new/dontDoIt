@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'pages#start'
+  root 'rooms#new'
+  resources :rooms, only:[:show, :index, :new, :create]
 end

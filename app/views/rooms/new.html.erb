@@ -1,0 +1,12 @@
+<h1>Create a new room</h1>
+<%= form_with scope: :room, url: rooms_path, local:true do |f|%>
+    <p>
+        <%= f.label :room_name %>
+        <%= f.text_field :room_name %>
+    </p>
+
+    <p>
+        <%= f.submit %>
+    </p>
+
+<% end %>
