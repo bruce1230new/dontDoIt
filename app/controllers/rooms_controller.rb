@@ -9,13 +9,17 @@ class RoomsController < ApplicationController
     end
 
     def new
-
+        @room = Room.new
     end
 
     def create
         @room = Room.new(params.require(:room).permit(:room_name))
-        @room.save
-        redirect_to room_path(@room)
+        if @room.save
+            flash[:notice] = "Room created sucessfully"
+            redirect_to room_path(@room)
+        else
+            render 'new'
+        end
     end
 
 end

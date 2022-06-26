@@ -1,4 +1,13 @@
 <h1>Create a new room</h1>
+
+<% if @room.errors.any? %>
+    <h2> Save error </h2>
+    <ul>
+        <% @room.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
 <%= form_with scope: :room, url: rooms_path, local:true do |f|%>
     <p>
         <%= f.label :room_name %>
