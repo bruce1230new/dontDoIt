@@ -11,7 +11,8 @@
         <% @rooms.each do |room|%>
             <tr>
                 <td><%= room.room_name %></td>
-                <td>action</td>
+                <td><%= button_to 'Show', room_path(room.id), method: "get" %></td>
+                <td><%= button_to 'Delete', room_path(room.id), method: "delete" %></td>
             </tr>
         <% end %>
     </tbody>
