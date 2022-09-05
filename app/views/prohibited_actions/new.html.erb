@@ -1,0 +1,21 @@
+<h1>Create a new prohibited action</h1>
+
+<% if @prohibited_action.errors.any? %>
+    <h2> Save error </h2>
+    <ul>
+        <% @prohibited_action.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+<%= form_with scope: :prohibited_action, url: prohibited_actions_path, local:true do |f|%>
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </p>
+
+    <p>
+        <%= f.submit %>
+    </p>
+
+<% end %>

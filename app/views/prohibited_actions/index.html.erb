@@ -1,0 +1,19 @@
+<h1>Prohibited actions manager</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Prohibited action name</th> 
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @prohibited_actions.each do |prohibited_action|%>
+            <tr>
+                <td><%= prohibited_action.name %></td>
+                <td><%= button_to 'Show', prohibited_action_path(prohibited_action.id), method: "get" %></td>
+                <td><%= button_to 'Delete', prohibited_action_path(prohibited_action.id), method: "delete" %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
