@@ -1,0 +1,24 @@
+<h1>Create a new player</h1>
+
+<% if @player.errors.any? %>
+    <h2> Save error </h2>
+    <ul>
+        <% @player.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+<%= form_with scope: :player, url: players_path, local:true do |f|%>
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :room_name %>
+        <%= f.text_field :room_name %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+
+<% end %>

@@ -1,0 +1,19 @@
+<h1>Player manager</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Player name</th> 
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @players.each do |player|%>
+            <tr>
+                <td><%= player.name %></td>
+                <td><%= button_to 'Show', player_path(player.id), method: "get" %></td>
+                <td><%= button_to 'Delete', player_path(player.id), method: "delete" %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
