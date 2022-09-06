@@ -1,3 +1,25 @@
+<h1> Room name: <%= @room_name %></h1>
 <h1> Player: <%= @player.name %></h1>
 
-<p><strong>Other players: </strong><%= @player.name %></p>
+<table>
+    <thead>
+        <tr>
+            <th>Player</th> 
+            <th>Prohibited action</th>
+            <th>Lives</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @players.each do |player|%>
+            <tr>
+                <td><%= player.name %></td>
+                <% if @player.id != player.id%>
+                    <td><%= player.prohibited_action.name %></td>
+                <% else %>
+                    <td>*********  </td>
+                <% end %>
+                <td><%= player.lives %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

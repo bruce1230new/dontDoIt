@@ -2,6 +2,9 @@ class PlayersController < ApplicationController
 
     def show
         @player = Player.find(params[:id])
+        room = @player.room
+        @room_name = room.room_name
+        @players = room.players
     end
 
     def index
