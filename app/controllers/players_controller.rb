@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class PlayersController < ApplicationController
 
     def show
@@ -17,11 +19,15 @@ class PlayersController < ApplicationController
     end
 
     def create
-        # rooms = Room.where(room_name: room_name)
         form_params = params.require(:player).permit(:name, :room_name)
         player_name = form_params[:name]
         room_name = form_params[:room_name]
-        room = Room.where(room_name: room_name).first
+        if room_name.empty?
+            room = Room.new(room_name: SecureRandom.urlsafe_base64(5))
+            room.save # Warn: Don't forget to save.
+        else
+            room = Room.where(room_name: room_name).first
+        end
         action_id = ProhibitedAction.order(Arel.sql('RANDOM()')).first.id
         @player = Player.new(name: player_name, room_id: room.id, prohibited_action_id: action_id, lives: 5)
         if @player.save
