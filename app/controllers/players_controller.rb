@@ -35,6 +35,16 @@ class PlayersController < ApplicationController
         # render plain: params[:player] # not working
     end
 
+    def update
+        @player = Player.find(params[:id])
+        action_id = ProhibitedAction.order(Arel.sql('RANDOM()')).first.id
+        cur_lives = @player.lives
+        if cur_lives > 0
+            @player.update(prohibited_action_id: action_id, lives: cur_lives - 1)
+        end
+        redirect_to @player
+    end
+
     def destroy
         @player = Player.find(params[:id])
         @player.destroy
